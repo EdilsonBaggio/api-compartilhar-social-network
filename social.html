@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<style type="text/css">
+
+		body{
+			font-family:'Arial', sans-serif;
+			text-align: center;
+		}
+
+		.obs{
+			text-align: center;
+			font-size: 14px;
+			color: #000;
+			font-style: italic;
+		}
+		.st-custom-button[data-network] {
+				display: inline-block;
+				padding: 5px 5px;
+				cursor: pointer;
+				font-weight: bold;
+				color: #fff;
+		}
+
+		.compartilhar {
+			position: absolute;
+			width: 367px;
+			height: auto;
+			margin-left: auto;
+			margin-right: auto;
+			left: 0;
+			right: 0;
+			top: 35%;
+			display: none;
+		}
+
+		.compartilhar ul li{
+			float: left;
+			width: 50px;
+			height: 50px;
+		}
+
+		.compartilhar ul li img{
+			width: 100%;
+		}
+
+
+		.box-comp{
+			width: 200px;
+			height: auto;
+			position: absolute;
+			align-items: center;
+			justify-content: center;
+			margin-left: auto;
+			margin-right: auto;
+			left: 0;
+			right: 0;
+		}
+
+		.box-comp ul{
+			padding: 0px;
+            border-top: 3px solid #000;
+		}
+
+		.box-comp ul li{
+			width: 100%;
+			height: auto;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #ccc;
+			list-style: none;
+			font-size: 13px;
+			font-family:'Arial', sans-serif;
+			cursor: pointer;
+		}
+
+		.clearboth{
+			clear: both;
+		}
+
+	</style>
+
+	<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6038eb21598a980011b233de&product=inline-share-buttons" async="async"></script>
+
+</head>
+<body>
+
+<script>
+
+ function compartilhar(){
+ 	document.getElementById("comp").style.display = "block";
+ }
+
+ function abrirmail(){
+ 	location.href = "mailto:edilsonbaggio_@hotmal.com";
+ }
+
+ function copiarL(){
+    var reference_element = document.querySelector('#of-to-select-text');
+      var range = document.createRange();
+      selection = window.getSelection(); 
+      selection.removeAllRanges(); 
+      selection.addRange(range);            
+      range.selectNodeContents(reference_element);
+
+      var success = document.execCommand('copy');
+    
+      if (success) {
+ 	      alert("Link copiado!");
+      }
+ };
+
+(function(document) {
+	var shareButtons = document.querySelectorAll(".st-custom-button[data-network]");
+	for(var i = 0; i < shareButtons.length; i++) {
+		var shareButton = shareButtons[i];
+
+		shareButton.addEventListener("click", function(e) {
+			var elm = e.target;
+			var network = elm.dataset.network;
+
+			console.log("share click: " + network);
+		});
+	}
+})(document);
+</script>
+
+<p class="obs">Obs: Caso queira compartilhar o link de um post só remover o data-url da lista onde estão adicionados os links sociais. Ele vai pegar a url da pagina.</p>
+
+
+<div id="of-to-select-text" style="color: transparent; font-size: 0px;">https://baggiosan.tech</div>
+<div id="comp" class="compartilhar">
+	<ul>
+		<li data-network="twitter" data-url="https://baggiosan.tech" class="st-custom-button"><img src="img/compartilhar/twitterimg_copy.png"></li>
+		<li data-network="facebook" data-url="https://baggiosan.tech" class="st-custom-button"><img src="img/compartilhar/facebookimg_copy.png"></li> 
+		<li data-network="whatsapp" data-url="https://baggiosan.tech" class="st-custom-button"><img src="img/compartilhar/whatsappimg_copy.png"></li> 
+		<li data-network="telegram" data-url="https://baggiosan.tech" class="st-custom-button"><img src="img/compartilhar/telegramimg_copy.png"></li> 
+		<li data-network="pinterest" data-url="https://baggiosan.tech" class="st-custom-button"><img src="img/compartilhar/pinterestimg_copy.png"></li>
+    </ul>
+</div>
+
+<div id="boxcomp" class="box-comp">
+	<ul>
+		<li onclick="abrirmail();">Enviar E-mail</li>
+		<li onclick="compartilhar();">Compartilhar em...</li>
+		<li onclick="copiarL();">Copiar Link</li>
+	</ul>
+</div>
+
+</body>
+</html>
